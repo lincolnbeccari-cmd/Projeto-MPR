@@ -7,6 +7,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ChamadoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\Historico_ChamadoController;
+use App\Http\Middleware\LoginApiMiddleware; 
+use App\Http\Middleware\AdminApiMiddleware;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -15,26 +18,27 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/salvar_usuario', [UsuarioController::class, 'salvar_usuario']);
 Route::get('/ver_usuario', [UsuarioController::class, 'ver_usuario']);
-Route::get('/listar_usuario', [UsuarioController::class, 'listar_usuario']);
-Route::put('/alterar_usuario', [UsuarioController::class, 'alterar_usuario']);
-Route::delete('/deletar_usuario', [UsuarioController::class, 'deletar_usuario']);
+Route::get('/listar_usuario', [UsuarioController::class, 'listar_usuario'])->middleware(LoginApiMiddleware::class);
+Route::put('/alterar_usuario', [UsuarioController::class, 'alterar_usuario'])->middleware(LoginApiMiddleware::class);
+Route::delete('/deletar_usuario', [UsuarioController::class, 'deletar_usuario'])->middleware(LoginApiMiddleware::class);
 
 Route::post('/salvar_chamado', [ChamadoController::class, 'salvar_chamado']);
 Route::get('/ver_chamado', [ChamadoController::class, 'ver_chamado']);
-Route::get('/listar_chamado', [ChamadoController::class, 'listar_chamado']);
-Route::put('/alterar_chamado', [ChamadoController::class, 'alterar_chamado']);
-Route::delete('/deletar_chamado', [ChamadoController::class, 'deletar_chamado']);
+Route::get('/listar_chamado', [ChamadoController::class, 'listar_chamado'])->middleware(LoginApiMiddleware::class);
+Route::put('/alterar_chamado', [ChamadoController::class, 'alterar_chamado'])->middleware(LoginApiMiddleware::class);
+Route::delete('/deletar_chamado', [ChamadoController::class, 'deletar_chamado'])->middleware(LoginApiMiddleware::class);
 
 Route::post('/salvar_categoria', [CategoriaController::class, 'salvar_categoria']);
 Route::get('/ver_categoria', [CategoriaController::class, 'ver_categoria']);
-Route::get('/listar_categoria', [CategoriaController::class, 'listar_categoria']);
-Route::put('/alterar_categoria', [CategoriaController::class, 'alterar_categoria']);
-Route::delete('/deletar_categoria', [CategoriaController::class, 'deletar_categoria']);
+Route::get('/listar_categoria', [CategoriaController::class, 'listar_categoria'])->middleware(LoginApiMiddleware::class);
+Route::put('/alterar_categoria', [CategoriaController::class, 'alterar_categoria'])->middleware(LoginApiMiddleware::class);
+Route::delete('/deletar_categoria', [CategoriaController::class, 'deletar_categoria'])->middleware(LoginApiMiddleware::class);
 
 Route::post('/salvar_historico_chamado', [Historico_ChamadoController::class, 'salvar_Historico_Chamado']);
 Route::get('/ver_historico_chamado', [Historico_ChamadoController::class, 'ver_historico_chamado']);
-Route::get('/listar_historicos_chamado', [Historico_ChamadoController::class, 'listar_historicos_chamado']);
-Route::put('/alterar_historico_chamado', [Historico_ChamadoController::class, 'alterar_historico_chamado']);
-Route::delete('/deletar_historico_chamado', [Historico_ChamadoController::class, 'deletar_historico_chamado']);
+Route::get('/listar_historicos_chamado', [Historico_ChamadoController::class, 'listar_historicos_chamado'])->middleware(LoginApiMiddleware::class);
+Route::put('/alterar_historico_chamado', [Historico_ChamadoController::class, 'alterar_historico_chamado'])->middleware(LoginApiMiddleware::class);
+Route::delete('/deletar_historico_chamado', [Historico_ChamadoController::class, 'deletar_historico_chamado'])->middleware(LoginApiMiddleware::class);
 
-
+Route::post('/login', [UsuarioController::class, 'login']);
+Route::post('/logout', [UsuarioController::class, 'logout'])->middleware(LoginApiMiddleware::class);
