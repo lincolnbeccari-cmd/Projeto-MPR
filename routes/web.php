@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ChamadoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\Historico_ChamadoController;  
+use App\Http\Controllers\LoginController;
 
 
 
@@ -13,10 +17,10 @@ Route::get('/', function () {
 
 Route::get('/Cadastro', [CadastroController::class, 'Cadastro'])->name('Cadastro');
 Route::post('/Cadastro', [CadastroController::class, 'salvar_usuario'])->name('salvar_usuario');
-Route::get('/login', [CadastroController::class, 'login'])->name('login');
-Route::post('/login', [CadastroController::class, 'autenticar'])->name('autenticar');
-Route::get('/home', [CadastroController::class, 'home'])->name('home');
-Route::get('/logout', [CadastroController::class, 'logout'])->name('logout');
+Route::get('/login', [LoginController::class, 'mostrarlogin'])->name('login');
+Route::post('/login', [LoginController::class, 'autenticar'])->name('autenticar');
+Route::get('/home', [LoginController::class, 'home'])->name('home');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/listar_usuarios', [UsuarioController::class, 'listar_usuarios'])->name('listar_usuarios');
 Route::get('/ver_usuario/{id}', [UsuarioController::class, 'ver_usuario'])->name('ver_usuario');
 Route::get('/alterar_usuario/{id}', [UsuarioController::class, 'alterar_usuario'])->name('alterar_usuario');
