@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $("#entrar").click(function() {
-        if ($("input#Email1").val() == "" || $("input#senha1").val() === "") {
+        if ($("#Email1").val() == "" || $("#senha1").val() === "") {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -25,8 +25,8 @@ $(document).ready(function(){
             url: 'api/login',
             method: 'POST',
             data: {
-                email: $("input#Email1").val(),
-                senha: $("input#senha1").val()
+                email: $("#Email1").val(),
+                senha: $("#senha1").val()
             },
             success: function(response) {
                 if (response.erro == 'n') {

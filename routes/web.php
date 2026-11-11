@@ -7,6 +7,8 @@ use App\Http\Controllers\ChamadoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\Historico_ChamadoController;  
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Middleware\LogadoMiddleware;
 
 
 
@@ -26,3 +28,4 @@ Route::get('/ver_usuario/{id}', [UsuarioController::class, 'ver_usuario'])->name
 Route::get('/alterar_usuario/{id}', [UsuarioController::class, 'alterar_usuario'])->name('alterar_usuario');
 Route::post('/alterar_usuario/{id}', [UsuarioController::class, 'salvar_alteracao_usuario'])->name('salvar_alteracao_usuario');
 Route::get('/deletar_usuario/{id}', [UsuarioController::class, 'deletar_usuario'])->name('deletar_usuario');
+Route::get('/home', [HomeController::class, 'mostrarHome'])->middleware(LogadoMiddleware::class) ->name('home');

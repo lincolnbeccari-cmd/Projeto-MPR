@@ -14,11 +14,14 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js"></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
         integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        @vite('resources/js/login.js')
+    @vite('resources/js/login.js')
 </head>
 
 <body>
@@ -36,7 +39,7 @@
                     <input type="password" class="form-control" id="senha1" aria-describedby="senhaHelp">
                     <div id="senhaHelp" class="form-text">Informe sua senha cadastrada.</div>
                 </div>
-                 <button type="button" class="btn-subtle theme-accent" id="entrar">Entrar</button>
+                <button type="button" class="btn-subtle theme-accent" id="entrar">Entrar</button>
             </div>
 
         </div>
